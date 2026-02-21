@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Instagram</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body class="ig-feed-body">
+    <header class="ig-nav">
+      <div class="ig-nav-inner">
+        <h1 class="ig-logo">Mini Instagram</h1>
+        <div class="ig-nav-right">
+          <span class="ig-user">@<%= user.username || user.name %></span>
+          <a href="/logout">Log out</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="ig-main">
+      <section class="ig-create-card">
+        <h2>Create post</h2>
+        <form action="/posts" method="post" enctype="multipart/form-data" class="ig-form">
+          <textarea name="caption" placeholder="Write a caption..." required></textarea>
+          <input type="file" name="image" accept="image/*" required />
+          <button type="submit">Share</button>
+        </form>
+      </section>
+
+      <% if (error) { %>
+      <p class="error"><%= error %></p>
+      <% } %>
+
+      <section class="ig-feed">
+        <% if (!posts.length) { %>
+        <p class="ig-muted">No posts yet. Create the first post.</p>
+        <% } %>
+
+        <% posts.forEach(post => { %>
+        <article class="ig-post-card">
+          <div class="ig-post-head">
+            <span><strong>@<%= post.author?.username || post.author?.name || "unknown" %></strong></span>
+            <span class="ig-muted"><%= new Date(post.createdAt).toLocaleString() %></span>
+          </div>
+          <img src="<%= post.image %>" alt="Post image" class="ig-post-image" />
+          <p class="ig-caption"><strong>@<%= post.author?.username || post.author?.name || "unknown" %></strong> <%= post.caption %></p>
+
+          <% if (String(post.author?._id) === String(user._id)) { %>
+          <div class="ig-owner-actions">
+            <form action="/posts/<%= post._id %>/update" method="post" enctype="multipart/form-data" class="ig-form">
+              <input type="text" name="caption" placeholder="New caption (optional)" />
+              <input type="file" name="image" accept="image/*" />
+              <button type="submit">Update</button>
+            </form>
+            <form action="/posts/<%= post._id %>/delete" method="post" class="ig-form">
+              <button class="danger" type="submit">Delete</button>
+            </form>
+          </div>
+          <% } %>
+        </article>
+        <% }) %>
+      </section>
+
+      <nav class="ig-pagination">
+        <% if (page > 1) { %>
+        <a href="/feed?page=<%= page - 1 %>">Previous</a>
+        <% } else { %>
+        <span class="disabled">Previous</span>
+        <% } %>
+        <span>Page <%= page %> of <%= totalPages %></span>
+        <% if (page < totalPages) { %>
+        <a href="/feed?page=<%= page + 1 %>">Next</a>
+        <% } else { %>
+        <span class="ig-disabled">Next</span>
+        <% } %>
+      </nav>
+    </main>
+  </body>
+</html>

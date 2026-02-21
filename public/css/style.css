@@ -1,0 +1,268 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap");
+
+:root {
+  --bg: #0f1115;
+  --card: #171a21;
+  --text: #f2f4f8;
+  --muted: #9aa4b2;
+  --border: #2a2f39;
+  --primary: #1da1ff;
+  --primary-dark: #0f8be6;
+  --danger: #ff4d5e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #1a1f2b, #0f1115 55%);
+  color: var(--text);
+}
+
+a {
+  color: var(--primary-dark);
+}
+
+.ig-logo {
+  font-family: "Orbitron", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  margin: 8px 0 18px;
+  text-align: center;
+  font-weight: 700;
+  background: linear-gradient(45deg, #f58529, #feda77, #dd2a7b, #8134af, #515bd4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.ig-muted {
+  color: var(--muted);
+}
+
+.ig-auth-body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.ig-auth-wrap {
+  width: min(390px, 100%);
+}
+
+.ig-card {
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 24px 36px;
+  margin-bottom: 10px;
+}
+
+.ig-card p {
+  margin: 0;
+  text-align: center;
+}
+
+.ig-small {
+  padding: 16px;
+}
+
+.ig-form {
+  display: grid;
+  gap: 8px;
+}
+
+input,
+textarea,
+button {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  padding: 9px 10px;
+  font-size: 13px;
+  background: #11151d;
+  color: var(--text);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #7f8a99;
+}
+
+textarea {
+  min-height: 86px;
+  resize: vertical;
+}
+
+button {
+  background: var(--primary);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+.danger {
+  background: var(--danger);
+}
+
+.ig-divider {
+  position: relative;
+  margin: 16px 0;
+  text-align: center;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.ig-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 1px solid var(--border);
+}
+
+.ig-divider span {
+  position: relative;
+  background: var(--card);
+  padding: 0 12px;
+}
+
+.signup-form {
+  margin-top: 4px;
+}
+
+.ig-feed-body {
+  background: var(--bg);
+}
+
+.ig-nav {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: #131720;
+  border-bottom: 1px solid var(--border);
+}
+
+.ig-nav-inner {
+  width: min(935px, 96%);
+  margin: 0 auto;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ig-nav .ig-logo {
+  margin: 0;
+  font-size: 28px;
+}
+
+.ig-nav-right {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.ig-user {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.ig-main {
+  width: min(935px, 96%);
+  margin: 22px auto;
+  display: grid;
+  gap: 14px;
+}
+
+.ig-create-card,
+.ig-post-card,
+.ig-pagination {
+  width: min(614px, 100%);
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.ig-create-card {
+  padding: 14px;
+}
+
+.ig-create-card h2 {
+  margin: 4px 0 10px;
+  font-size: 18px;
+}
+
+.ig-post-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+.ig-post-image {
+  width: 100%;
+  max-height: 760px;
+  object-fit: cover;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.ig-caption {
+  margin: 0;
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.ig-owner-actions {
+  padding: 0 14px 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.ig-pagination {
+  margin-top: 8px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.ig-disabled,
+.disabled {
+  color: var(--muted);
+}
+
+.error {
+  color: #d3002d;
+  font-size: 13px;
+  text-align: center;
+  margin: 10px 0;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .ig-card {
+    padding: 20px;
+  }
+
+  .ig-create-card,
+  .ig-post-card,
+  .ig-pagination {
+    width: 100%;
+  }
+}
